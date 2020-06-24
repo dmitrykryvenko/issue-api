@@ -10,4 +10,4 @@ RUN yarn
 
 EXPOSE 4400
 
-CMD ["yarn", "start:dev"]
+CMD ["yarn", "start"]

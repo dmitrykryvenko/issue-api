@@ -9,7 +9,7 @@ enum EState {
 export class Issue extends Typegoose {
 
   @prop()
-  label: string;
+  title: string;
 
   @prop()
   description: string;

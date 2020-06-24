@@ -1,0 +1,30 @@
+extend type Mutation {
+    issue: IssueMutations!
+}
+input IssueCreateInput {
+    title: String!
+    description: String!
+}
+
+input IssueUpdateInput {
+    title: String
+    description: String
+    state: EState
+}
+
+type IssueResponse {
+    ok: Boolean
+    issue: Issue
+}
+
+type IssueMutations {
+    issueCreate(input: IssueCreateInput!): IssueResponse
+    issueUpdate(input: IssueUpdateInput!): IssueResponse
+}
+
+type Issue {
+    id: ID!
+    title: String!
+    description: String!
+    state: EState
+}
