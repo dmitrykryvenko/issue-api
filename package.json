@@ -24,7 +24,6 @@
     "@nestjs/graphql": "^7.4.2",
     "@nestjs/mongoose": "^7.0.1",
     "@nestjs/platform-express": "^6.0.0",
-    "@typegoose/typegoose": "7.2.0",
     "apollo-server": "^2.15.0",
     "apollo-server-express": "^2.15.0",
     "graphql": "^15.1.0",
@@ -36,8 +35,7 @@
     "nestjs-typegoose": "^7.1.28",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
-    "rxjs": "^6.3.3",
-    "typegoose": "^5.9.1"
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",
