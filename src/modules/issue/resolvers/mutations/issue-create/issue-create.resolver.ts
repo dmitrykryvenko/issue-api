@@ -1,7 +1,6 @@
 import { Args, ResolveField, Resolver } from '@nestjs/graphql';
-import { IssueService } from '../../../service/issue.service';
-import { IssueCreateDto } from '../../../dtos/issue-create.dto';
-import { Logger } from '@nestjs/common';
+import { IssueService } from 'modules/issue/service/issue.service';
+import { IssueCreateDto } from 'modules/issue/dtos/issue-create.dto';
 
 @Resolver('IssueMutations')
 export class IssueCreateResolver {

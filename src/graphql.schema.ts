@@ -18,6 +18,7 @@ export interface IssueCreateInput {
 }
 
 export interface IssueUpdateInput {
+    id: string;
     title?: string;
     description?: string;
     state?: EState;
@@ -30,11 +31,16 @@ export interface IMutation {
 
 export interface IQuery {
     _(): boolean | Promise<boolean>;
+    getIssues(): IssuesResponse | Promise<IssuesResponse>;
 }
 
 export interface IssueResponse {
     ok?: boolean;
     issue?: Issue;
+}
+
+export interface IssuesResponse {
+    data?: Issue[];
 }
 
 export interface IssueMutations {

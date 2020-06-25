@@ -1,28 +1,31 @@
+import { Model } from 'mongoose';
+
 import { Injectable } from '@nestjs/common';
-import {InjectModel} from 'nestjs-typegoose';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { Issue } from '../issue';
-import {ReturnModelType} from '@typegoose/typegoose';
+import { IIssue } from 'modules/issue/interfaces/issue.interface';
 
-import { EState } from '../../../graphql.schema';
+import { IssueUpdateDto } from '../dtos/issue-update.dto';
+import { IssueCreateDto } from '../dtos/issue-create.dto';
+
+import { EState } from 'graphql.schema';
 
 @Injectable()
 export class IssueService {
-  constructor(@InjectModel(Issue) private readonly issueModel: ReturnModelType<typeof Issue>) {
+  constructor(@InjectModel('Issue') private readonly issueModel: Model<IIssue>) {}
+
+  async create(createIssue: IssueCreateDto): Promise<IIssue> {
+    const createdIssue = new this.issueModel({...createIssue, state: EState.OPEN});
+    return createdIssue.save();
   }
 
-  async create(params: {title: string, description: string}) {
-    const { title, description } = params;
-    const issue = new this.issueModel();
-    issue.title = title;
-    issue.description = description;
-    issue.state = EState.OPEN;
+  async update(updateIssue: IssueUpdateDto): Promise<IIssue> {
+    const { id, state } = updateIssue;
+    return this.issueModel.findByIdAndUpdate(id, { state }).exec();
 
-    return await issue.save();
   }
 
-  async getAll(): Promise<Issue[] | null> {
-    return await this.issueModel.find();
+  async findAll(): Promise<IIssue[]> {
+    return this.issueModel.find().exec();
   }
-
 }

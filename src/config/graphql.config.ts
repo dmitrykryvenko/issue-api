@@ -8,7 +8,6 @@ const nameSpaces = [
 
 const resolvers = {
   Mutation: assign({}, ...map(nameSpaces, (key: string) => set({}, key, () => ({})))),
-
 };
 
 export default {

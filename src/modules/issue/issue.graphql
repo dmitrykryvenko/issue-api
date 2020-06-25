@@ -1,12 +1,16 @@
 extend type Mutation {
     issue: IssueMutations!
 }
+extend type Query {
+    getIssues: IssuesResponse!
+}
 input IssueCreateInput {
     title: String!
     description: String!
 }
 
 input IssueUpdateInput {
+    id: String!
     title: String
     description: String
     state: EState
@@ -15,6 +19,10 @@ input IssueUpdateInput {
 type IssueResponse {
     ok: Boolean
     issue: Issue
+}
+
+type IssuesResponse {
+    data: [Issue]
 }
 
 type IssueMutations {
