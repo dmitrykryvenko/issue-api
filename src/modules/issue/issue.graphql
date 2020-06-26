@@ -9,11 +9,19 @@ input IssueCreateInput {
     description: String!
 }
 
+input IssueDeleteInput  {
+    id: String!
+}
+
 input IssueUpdateInput {
     id: String!
     title: String
     description: String
     state: EState
+}
+
+type IssueDeleteResponse {
+   ok: Boolean
 }
 
 type IssueResponse {
@@ -28,6 +36,7 @@ type IssuesResponse {
 type IssueMutations {
     issueCreate(input: IssueCreateInput!): IssueResponse
     issueUpdate(input: IssueUpdateInput!): IssueResponse
+    issueDelete(input: IssueDeleteInput!): IssueDeleteResponse
 }
 
 type Issue {
@@ -35,4 +44,5 @@ type Issue {
     title: String!
     description: String!
     state: EState
+    createdAt: DateString
 }

@@ -9,10 +9,11 @@ import { IssueController } from './controller/issue.controller';
 import { IssueCreateResolver } from './resolvers/mutations/issue-create/issue-create.resolver';
 import { IssueUpdateResolver } from './resolvers/mutations/issue-update/issue-update.resolver';
 import { IssuesResolver } from './resolvers/queries/issues/issues.resolver';
+import { IssueDeleteResolver } from './resolvers/mutations/issue-delete/issue-delete.resolver';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'Issue', schema: IssueSchema }])],
-  providers: [IssueService, IssueCreateResolver, IssueUpdateResolver, IssuesResolver],
+  providers: [IssueService, IssueCreateResolver, IssueUpdateResolver, IssueDeleteResolver, IssuesResolver],
   controllers: [IssueController],
 })
 export class IssueModule {}

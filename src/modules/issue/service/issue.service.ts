@@ -15,7 +15,8 @@ export class IssueService {
   constructor(@InjectModel('Issue') private readonly issueModel: Model<IIssue>) {}
 
   async create(createIssue: IssueCreateDto): Promise<IIssue> {
-    const createdIssue = new this.issueModel({...createIssue, state: EState.OPEN});
+    const date = new Date();
+    const createdIssue = new this.issueModel({...createIssue, state: EState.OPEN, createdAt: date.toISOString()});
     return createdIssue.save();
   }
 
@@ -23,6 +24,11 @@ export class IssueService {
     const { id, state } = updateIssue;
     return this.issueModel.findByIdAndUpdate(id, { state }).exec();
 
+  }
+
+  async delete(deleteIssue: IssueUpdateDto): Promise<IIssue> {
+    const { id } = deleteIssue;
+    return this.issueModel.findByIdAndDelete(id).exec();
   }
 
   async findAll(): Promise<IIssue[]> {

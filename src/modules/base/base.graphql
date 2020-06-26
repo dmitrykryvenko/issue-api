@@ -7,3 +7,4 @@ type Query {
 }
 
 scalar JSON
+scalar DateString

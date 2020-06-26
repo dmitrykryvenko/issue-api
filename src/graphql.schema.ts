@@ -17,6 +17,10 @@ export interface IssueCreateInput {
     description: string;
 }
 
+export interface IssueDeleteInput {
+    id: string;
+}
+
 export interface IssueUpdateInput {
     id: string;
     title?: string;
@@ -34,6 +38,10 @@ export interface IQuery {
     getIssues(): IssuesResponse | Promise<IssuesResponse>;
 }
 
+export interface IssueDeleteResponse {
+    ok?: boolean;
+}
+
 export interface IssueResponse {
     ok?: boolean;
     issue?: Issue;
@@ -46,6 +54,7 @@ export interface IssuesResponse {
 export interface IssueMutations {
     issueCreate?: IssueResponse;
     issueUpdate?: IssueResponse;
+    issueDelete?: IssueDeleteResponse;
 }
 
 export interface Issue {
@@ -53,6 +62,8 @@ export interface Issue {
     title: string;
     description: string;
     state?: EState;
+    createdAt?: DateString;
 }
 
 export type JSON = any;
+export type DateString = any;

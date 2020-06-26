@@ -12,6 +12,9 @@ export class Issue extends Document {
 
   @Prop()
   state: EState;
+
+  @Prop()
+  createdAt: string;
 }
 
 export const IssueSchema = SchemaFactory.createForClass(Issue);
