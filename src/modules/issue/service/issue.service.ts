@@ -32,6 +32,6 @@ export class IssueService {
   }
 
   async findAll(): Promise<IIssue[]> {
-    return this.issueModel.find().exec();
+    return this.issueModel.find().sort({createdAt: -1}).exec();
   }
 }
